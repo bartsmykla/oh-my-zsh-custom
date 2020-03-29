@@ -1,3 +1,5 @@
+SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+
 function git_is_dirty() {
   local STATUS
   local -a FLAGS
@@ -33,21 +35,13 @@ function git_prompt_info() {
 
 function git_current_user_symbol() {
   local user_email="$(git config user.email 2>/dev/null)"
-  local symbol_priv="➜"
-  local symbol_work="❀"
-  local symbol
-  
-  case "${user_email}" in
-    bartek@smykla.com)
-      symbol="${symbol_priv}"
-      ;;
-    
-    bsmykla@vmware.com)
-      symbol="${symbol_work}"
-      ;;
+  declare -A SYMBOLS
+  source "${SCRIPT_DIR}/symbols.sh"
+  local symbol="${SYMBOLS[$user_email]}"
 
-    *)
-  esac
+  if [ ! ${SYMBOLS[$user_email]+_} ]; then
+    symbol="@"
+  fi
 
   echo "${symbol}"
 }
