@@ -1,4 +1,4 @@
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+SCRIPT_DIR=$(dirname "${(%):-%N}")
 
 function git_is_dirty() {
   local STATUS
