@@ -33,15 +33,18 @@ function git_prompt_info() {
   fi
 }
 
-function git_current_user_symbol() {
+function git_success_user_symbol() {
+  source "${SCRIPT_DIR}/symbols.zsh"
   local user_email="$(git config user.email 2>/dev/null)"
-  declare -A SYMBOLS
-  source "${SCRIPT_DIR}/symbols.sh"
-  local symbol="${SYMBOLS[$user_email]}"
+  local symbol="${SYMBOLS[${user_email}:SUCCESS]}"
 
-  if [ ! ${SYMBOLS[$user_email]+_} ]; then
-    symbol="@"
-  fi
+  echo ${symbol:='%{$fg_bold[green]%}:%{$reset_color%}'}
+}
 
-  echo "${symbol}"
+function git_failure_user_symbol() {
+  source "${SCRIPT_DIR}/symbols.zsh"
+  local user_email="$(git config user.email 2>/dev/null)"
+  local symbol="${SYMBOLS[${user_email}:FAILURE]}"
+
+  echo ${symbol:='%{$fg_bold[red]%}:%{$reset_color%}'}
 }

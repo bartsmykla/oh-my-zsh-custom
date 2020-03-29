@@ -1,7 +1,7 @@
 PROMPT='$(parse_git_dirty)'
 PROMPT+='%{$fg_bold[cyan]%}%c%{$reset_color%}'
 PROMPT+='($(git_prompt_info)$(git_prompt_short_sha))%{$reset_color%}'
-PROMPT+=' %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})$(git_current_user_symbol)%{$reset_color%} '
+PROMPT+=' %(?.$(git_success_user_symbol).$(git_failure_user_symbol)) '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

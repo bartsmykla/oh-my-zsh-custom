@@ -1,2 +1,2 @@
-symbols.sh filter=git-crypt diff=git-crypt
+symbols.zsh filter=git-crypt diff=git-crypt
 .gitattributes !filter !diff
