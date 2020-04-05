@@ -23,6 +23,22 @@ function git_is_dirty() {
   echo ${STATUS}
 }
 
+function git_prompt() {
+  local branch="$(git_prompt_info)"
+  local sha="$(git_prompt_short_sha)"
+  local prompt="${branch}${sha}"
+
+  [[ ! -z "${prompt}" ]] && prompt+="$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
+
+  echo "${prompt}"
+}
+
+# Formats prompt string for current git commit short SHA
+function git_prompt_short_sha() {
+  local SHA
+  SHA=$(command git rev-parse --short HEAD 2> /dev/null) && echo "$ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA"
+}
+
 # Outputs current branch info in prompt format
 function git_prompt_info() {
   local ref
