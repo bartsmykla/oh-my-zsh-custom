@@ -8,6 +8,6 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[yellow]%}✗ "
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$fg_bold[grey]%}#"
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$bold_color%}%{$FG[008]%}#"
 
 ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%})"
